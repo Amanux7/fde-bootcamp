@@ -1,0 +1,850 @@
+# Phase 1 – Computer Fundamentals
+
+# Module 1 – How Computers Actually Work
+
+# Lesson 3 – The CPU: How Your Code Actually Runs
+
+---
+
+# 🎯 Goal
+
+Understand how a CPU executes instructions from the moment you run a program.
+
+---
+
+# 📚 Learning Objectives
+
+By the end of this lesson, you'll be able to:
+
+- Explain what the CPU actually does.
+- Understand machine instructions.
+- Learn the **Fetch → Decode → Execute** cycle.
+- Understand registers.
+- Understand the role of the CPU clock.
+- Explain how Python eventually becomes CPU instructions.
+
+---
+
+# 💡 Why This Lesson Matters
+
+Imagine you write:
+
+```python
+x = 5 + 10
+print(x)
+```
+
+Looks simple.
+
+But inside your computer...
+
+Millions of tiny electrical operations happen.
+
+Today we're going to understand how they happen.
+
+---
+
+# 🧠 First Principles
+
+Let's begin with a simple question.
+
+## What is the CPU?
+
+People often say:
+
+> **"The CPU is the brain of the computer."**
+
+That's not entirely wrong.
+
+A better way to think about it is:
+
+> **The CPU is an instruction execution machine.**
+
+It doesn't think.
+
+It doesn't understand.
+
+It doesn't make decisions.
+
+It simply executes instructions extremely quickly.
+
+---
+
+# 👨‍🍳 Think Like a Chef
+
+Imagine a chef in a restaurant.
+
+The chef doesn't invent the recipe.
+
+The chef simply follows it.
+
+```text
+Recipe
+   ↓
+Read Step
+   ↓
+Cook
+   ↓
+Read Next Step
+   ↓
+Cook
+   ↓
+Repeat
+```
+
+The CPU works the same way.
+
+```text
+Instruction
+      ↓
+Read
+      ↓
+Execute
+      ↓
+Read Next
+      ↓
+Execute
+      ↓
+Repeat
+```
+
+---
+
+# 🔹 What Is an Instruction?
+
+The CPU understands only very small operations.
+
+Examples include:
+
+- ADD
+- SUBTRACT
+- MOVE
+- COMPARE
+- JUMP
+- LOAD
+- STORE
+
+Notice something.
+
+There is no instruction called:
+
+- Create Website
+- Build AI Agent
+- Open Chrome
+
+Everything is broken into tiny machine instructions.
+
+---
+
+# 🐍 Imagine This Python Code
+
+```python
+x = 5
+y = 10
+z = x + y
+```
+
+The CPU never sees Python.
+
+Instead, the interpreter eventually generates instructions similar to:
+
+```text
+LOAD 5
+STORE Register A
+
+LOAD 10
+STORE Register B
+
+ADD Register A Register B
+
+STORE Result
+```
+
+Every programming language eventually becomes machine instructions.
+
+---
+
+# 📌 Meet the Registers
+
+Registers are tiny storage locations inside the CPU.
+
+Think of them as **sticky notes on your desk**.
+
+Imagine solving:
+
+```text
+15 + 25
+```
+
+You don't keep walking to the filing cabinet after every number.
+
+You keep the numbers right in front of you.
+
+Registers work exactly like that.
+
+```text
+CPU
+
++---------------------------+
+
+Register A
+
+Register B
+
+Register C
+
+Program Counter
+
+Instruction Register
+
++---------------------------+
+```
+
+Registers are much faster than RAM.
+
+---
+
+# ⚡ CPU Registers vs RAM
+
+| CPU Registers | RAM |
+|--------------|-----|
+| Inside CPU | Outside CPU |
+| Extremely Fast | Fast |
+| Very Small | Much Larger |
+| Temporary | Temporary |
+
+Think of it like this:
+
+```text
+Registers
+     ↓
+Desk
+
+RAM
+     ↓
+Room
+
+SSD
+     ↓
+Warehouse
+```
+
+The closer the data is to the CPU, the faster it is to access.
+
+---
+
+# ⏰ The CPU Clock
+
+Imagine a drummer.
+
+```text
+Beat
+
+Beat
+
+Beat
+
+Beat
+```
+
+The CPU also has its own rhythm called the **clock**.
+
+Every clock tick allows the CPU to perform work.
+
+Example:
+
+```text
+Clock Tick 1
+Fetch
+
+Clock Tick 2
+Decode
+
+Clock Tick 3
+Execute
+
+Clock Tick 4
+Next Instruction
+```
+
+Modern CPUs perform **billions of clock cycles every second.**
+
+Example:
+
+A **3.5 GHz CPU** performs approximately:
+
+> **3.5 Billion Clock Cycles Per Second**
+
+This doesn't necessarily mean 3.5 billion complete instructions because some instructions require multiple cycles.
+
+---
+
+# 🔄 The Fetch → Decode → Execute Cycle
+
+This is one of the most important concepts in computer architecture.
+
+Every instruction follows three stages.
+
+```text
+Memory
+    ↓
+FETCH
+    ↓
+DECODE
+    ↓
+EXECUTE
+    ↓
+Next Instruction
+```
+
+---
+
+## Step 1 — Fetch
+
+The CPU asks:
+
+> **"What is my next instruction?"**
+
+It retrieves the instruction from RAM.
+
+```text
+RAM
+   ↓
+LOAD Register A
+```
+
+---
+
+## Step 2 — Decode
+
+Now the CPU determines:
+
+> **"What does this instruction mean?"**
+
+Example:
+
+```text
+LOAD
+```
+
+means
+
+```text
+Move data into a register.
+```
+
+---
+
+## Step 3 — Execute
+
+The CPU performs the action.
+
+Example:
+
+```text
+Register A = 5
+```
+
+Done.
+
+Then the cycle repeats.
+
+---
+
+# ♾️ Millions of Times Per Second
+
+While your computer is running, the CPU continuously performs:
+
+```text
+Fetch
+   ↓
+Decode
+   ↓
+Execute
+   ↓
+Fetch
+   ↓
+Decode
+   ↓
+Execute
+   ↓
+Repeat...
+```
+
+Billions of times every second.
+
+---
+
+# 🐍 What Happens When You Run Python?
+
+Suppose you execute:
+
+```python
+print("Hello")
+```
+
+The complete journey looks like this.
+
+```text
+You
+   ↓
+VS Code
+   ↓
+Operating System
+   ↓
+Python Interpreter
+   ↓
+CPU
+   ↓
+Fetch
+   ↓
+Decode
+   ↓
+Execute
+   ↓
+Monitor
+```
+
+Notice:
+
+The CPU never sees:
+
+```python
+print("Hello")
+```
+
+Instead, it sees machine instructions generated by the interpreter.
+
+---
+
+# 💾 Where Does RAM Fit?
+
+Suppose your program is stored in RAM.
+
+```text
+RAM
+
+Instruction 1
+
+Instruction 2
+
+Instruction 3
+
+Instruction 4
+```
+
+The CPU fetches one instruction at a time.
+
+```text
+RAM
+   ↓
+CPU
+   ↓
+RAM
+   ↓
+CPU
+```
+
+This constant movement of data is one reason why memory speed is important.
+
+---
+
+# 🚀 Why Are CPUs So Fast?
+
+Modern CPUs are optimized using several techniques.
+
+Examples:
+
+- High clock speeds
+- Multiple cores
+- Pipelining
+- CPU Cache
+- Branch Prediction
+
+We'll study these concepts later.
+
+For now, remember:
+
+> The CPU is optimized to execute simple instructions extremely quickly.
+
+---
+
+# 🛠️ Real Engineering Example
+
+Suppose your AI application feels slow.
+
+Possible bottlenecks include:
+
+- CPU is busy.
+- RAM is full.
+- SSD is slow.
+- Network is slow.
+- GPU is overloaded.
+
+Understanding the CPU helps engineers identify where the problem actually exists.
+
+---
+
+# ❌ Common Misconceptions
+
+### ❌ The CPU runs Python directly.
+
+No.
+
+The Python Interpreter translates your code into machine instructions that the CPU can execute.
+
+---
+
+### ❌ Faster GHz always means a faster CPU.
+
+Not always.
+
+Performance also depends on:
+
+- CPU architecture
+- Cache
+- Number of cores
+- Instruction efficiency
+- Workload
+
+---
+
+### ❌ The CPU stores your program.
+
+No.
+
+Programs are stored on:
+
+- SSD (permanently)
+- RAM (while running)
+
+The CPU fetches instructions only when needed.
+
+---
+
+# 💻 Hands-On Exercise
+
+Open your terminal.
+
+Run:
+
+```bash
+python
+```
+
+Then type:
+
+```python
+print("Hello CPU")
+```
+
+and
+
+```python
+2 + 3
+```
+
+Ask yourself:
+
+- Did Python perform the addition?
+- Or did the CPU perform the addition after Python translated the request?
+
+We'll revisit this idea many times.
+
+---
+
+# 📒 Mini Project
+
+Create a new file:
+
+```text
+notes/
+    lesson-03.md
+```
+
+Answer the following questions in your own words:
+
+- What is a CPU?
+- What is an instruction?
+- What are registers?
+- What is the Fetch → Decode → Execute cycle?
+- Why are registers faster than RAM?
+- Why doesn't the CPU understand Python directly?
+
+Then commit your work:
+
+```bash
+git add .
+
+git commit -m "Add Lesson 3 notes on CPU execution"
+
+git push
+```
+
+---
+
+# 📝 Quiz
+
+Without looking back, answer these questions:
+
+1. What is the primary job of the CPU?
+2. What are registers used for?
+3. What are the three stages of the instruction cycle?
+4. Does the CPU execute Python code directly?
+5. Where are program instructions stored before the CPU fetches them?
+6. What does a CPU clock measure?
+
+---
+
+# 💼 Interview Questions
+
+Imagine you're interviewing for a junior engineering role.
+
+Be prepared to answer:
+
+- Explain the CPU to a non-technical person.
+- Why are registers important?
+- Walk through what happens after clicking **Run** on a Python program.
+- Why is RAM necessary if the CPU already has registers?
+- What is the difference between RAM and registers?
+
+---
+
+# 🎯 FDE Insight
+
+As a **Forward Deployed Engineer**, you'll eventually work on:
+
+- AI inference services
+- Backend APIs
+- Databases
+- Cloud infrastructure
+- Performance optimization
+
+You'll hear terms like:
+
+- "The service is CPU-bound."
+- "The workload is memory-bound."
+- "The cache hit rate is low."
+
+Understanding how the CPU executes instructions gives you the mental model needed to diagnose and improve production systems.
+
+---
+
+# 🧠 Complete Mental Model
+
+```text
+You
+ │
+ ▼
+VS Code
+ │
+ ▼
+Operating System
+ │
+ ▼
+Python Interpreter
+ │
+ ▼
+Reads program.py
+ │
+ ▼
+CPU
+ │
+ ▼
+Fetch → Decode → Execute
+ │
+ ▼
+Python
+ │
+ ▼
+Terminal
+ │
+ ▼
+Monitor
+ │
+ ▼
+You see the output
+```
+
+Remember:
+
+> **The CPU never reads `.py` files directly.**
+
+The actual flow is:
+
+```text
+Python Code
+      ↓
+Python Interpreter
+      ↓
+Machine Instructions
+      ↓
+CPU
+      ↓
+Fetch
+Decode
+Execute
+```
+
+---
+
+# 🧩 Where Does Data Live?
+
+Consider:
+
+```python
+x = 5
+y = 10
+z = x + y
+```
+
+### Step 1
+
+Python stores variables in RAM.
+
+```text
+RAM
+
+x = 5
+
+y = 10
+```
+
+---
+
+### Step 2
+
+The CPU copies the values into registers.
+
+```text
+CPU
+
+Register A = 5
+
+Register B = 10
+```
+
+---
+
+### Step 3
+
+The ALU (Arithmetic Logic Unit) performs:
+
+```text
+5 + 10 = 15
+```
+
+---
+
+### Step 4
+
+The result is written back to RAM.
+
+```text
+RAM
+
+x = 5
+
+y = 10
+
+z = 15
+```
+
+---
+
+# 🍞 Kitchen Analogy
+
+Think of making a sandwich.
+
+```text
+Pantry (RAM)
+
+Bread
+Butter
+Cheese
+Tomatoes
+```
+
+You don't prepare the sandwich inside the pantry.
+
+Instead, you move the ingredients to the kitchen counter.
+
+```text
+Kitchen Counter (Registers)
+
+Bread
+Butter
+Cheese
+```
+
+You assemble the sandwich there because it's faster and easier.
+
+Registers work exactly like the kitchen counter—small, but extremely fast.
+
+---
+
+# 📊 Complete Data Flow
+
+```text
+SSD
+│
+│  Stores program.py
+▼
+RAM
+│
+│  Stores variables and instructions
+▼
+CPU Registers
+│
+│  Temporarily hold values
+▼
+ALU
+│
+│  Performs calculations
+▼
+CPU Registers
+│
+│  Stores result temporarily
+▼
+RAM
+│
+│  Stores updated values
+▼
+Python
+▼
+Terminal
+▼
+Monitor
+```
+
+---
+
+# ❓ Mentor Challenge
+
+Imagine a computer has:
+
+- **8 GB RAM**
+- **16 CPU Registers**
+
+Question:
+
+> Why doesn't the CPU simply use RAM directly?
+
+Why do registers exist at all?
+
+**Hint:** It's all about **speed**.
+
+---
+
+# 📌 Key Takeaways
+
+- The CPU is an instruction execution machine.
+- Programs are broken into tiny machine instructions.
+- Registers are extremely fast storage locations inside the CPU.
+- The CPU follows the **Fetch → Decode → Execute** cycle for every instruction.
+- Variables live in RAM while a program runs.
+- During calculations, values are copied into registers.
+- The ALU performs arithmetic and logical operations.
+- Results are written back to RAM after computation.
+- Python code is translated into machine instructions before the CPU executes it.
+- Understanding how data moves through the computer is essential for debugging and performance optimization.
